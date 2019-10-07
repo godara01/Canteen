@@ -7,5 +7,5 @@ final routes = {
   "/signup": (context) => Signup(),
   "/login": (context) => Login(),
   "/selectorder": (context) => SelectOrder(),
-  // "/placeorder": (context) => PlaceOrder(),
+  "/placeorder": (context) => PlaceOrder(),
 };

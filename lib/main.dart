@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:canteen/login.dart';
+import 'package:canteen/ordermodel.dart';
 import 'package:canteen/routes.dart';
 import 'package:canteen/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:canteen/theme/color.dart';
-import 'package:canteen/selectOrder.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,17 +23,20 @@ class MyApp extends StatelessWidget {
       systemNavigationBarDividerColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.light,
     ));
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: AppTheme.textTheme,
-        platform: TargetPlatform.iOS,
+    return ChangeNotifierProvider(
+      builder: (_) => OrderModel(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          textTheme: AppTheme.textTheme,
+          platform: TargetPlatform.iOS,
+        ),
+        initialRoute: "/signup",
+        routes: routes,
+        home: Signup(),
       ),
-      initialRoute: "/signup",
-      routes: routes,
-      home: Signup(),
     );
   }
 }
